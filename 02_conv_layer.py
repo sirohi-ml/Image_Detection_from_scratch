@@ -28,7 +28,8 @@ print(image.shape)
 
 print(image)
 
-image = image.unsqueeze(0).unsqueeze(0)
+image = image.unsqueeze(0).unsqueeze(0)  # this will add a dimension and then again a dimesion, because we want the image to be of shape
+                                         # [out_channels, in_channels, height, width]
 
 print(image.shape)
 
