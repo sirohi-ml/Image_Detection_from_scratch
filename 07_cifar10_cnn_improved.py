@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 test_transform = transforms.ToTensor()          # for test dataset we do not need to perform any random augmentations
 
 train_transform = transforms.Compose([          # "transforms.compose" composes several transforms together
-    transforms.RandomCrop(32, padding=4),       # crop the image at a random location, original image = [32 x 32], add 4 pixels of padding = [40 x 40], crop back randomly from any position = [32 x 32]
+    transforms.RandomCrop(32, padding=4),       # crop the image at a random location, original image = [32 x 32], add 4 pixels of padding = [40 x 40], crop back randomly from any position = [32 x 32], transformation applied at every image
     transforms.RandomHorizontalFlip(),          # horizontally flip the given image randomly with a given probability, default prob = 0.5
     transforms.ToTensor()                       # also we are performing "on the fly augmentation" i.e. modifying existing images and not add new ones
 ])
@@ -50,7 +50,7 @@ validation_indices = indices[train_size:]
 from torch.utils.data import Subset
 
 train_dataset = Subset(
-    train_dataset_full,                         # # 50,000 training images with augmentation
+    train_dataset_full,                         # 50,000 training images with augmentation
     train_indices
 )
 
